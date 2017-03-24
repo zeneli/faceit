@@ -25,7 +25,21 @@ class FaceView: UIView {
     }
     
     private func pathForEye(_ eye: Eye) -> UIBezierPath {
+        // local function used here only
+        func centerOfEye(_ eye: Eye) -> CGPoint {
+            let eyeOffset = skullRadius / Ratios.skullRadiusToEyeOffset
+            var eyeCenter = skullCenter
+            eyeCenter.y -= eyeOffset  // move up
+            eyeCenter.x += ((eye == .left) ? -1 : 1) * eyeOffset  // add or sub eye offset baed on left or right
+            return eyeCenter
+        }
+        let eyeRadius = skullRadius / Ratios.skullRadiusToEyeRadius
+        let eyeCenter = centerOfEye(eye)
         
+        let path = UIBezierPath(arcCenter: eyeCenter, radius: eyeRadius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        path.lineWidth = 5.0
+        
+        return path
     }
     
     private func pathForSkull() -> UIBezierPath {
@@ -39,6 +53,8 @@ class FaceView: UIView {
         // Emoji face
         UIColor.blue.set()
         pathForSkull().stroke()
+        pathForEye(.left).stroke()
+        pathForEye(.right).stroke()
     }
     
     // Some constants of skull radius to eye and mouth
