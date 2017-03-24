@@ -40,4 +40,13 @@ class FaceView: UIView {
         UIColor.blue.set()
         pathForSkull().stroke()
     }
+    
+    // Some constants of skull radius to eye and mouth
+    private struct Ratios {
+        static let skullRadiusToEyeOffset: CGFloat = 3
+        static let skullRadiusToEyeRadius: CGFloat = 10
+        static let skullRadiusToMouthWidth: CGFloat = 1
+        static let skullRadiusToMouthHeight: CGFloat = 3
+        static let skullRadiusToMouthOffset: CGFloat = 3
+    }
 }
