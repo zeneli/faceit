@@ -54,14 +54,22 @@
 		23CF974C1E85610B00B5214C /* FaceIt */ = {
 			isa = PBXGroup;
 			children = (
-				23CF974D1E85610B00B5214C /* AppDelegate.swift */,
+				23CF975F1E85612800B5214C /* Supporting Files */,
 				23CF974F1E85610B00B5214C /* ViewController.swift */,
 				23CF97511E85610B00B5214C /* Main.storyboard */,
+			);
+			path = FaceIt;
+			sourceTree = "<group>";
+		};
+		23CF975F1E85612800B5214C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				23CF974D1E85610B00B5214C /* AppDelegate.swift */,
 				23CF97541E85610B00B5214C /* Assets.xcassets */,
 				23CF97561E85610B00B5214C /* LaunchScreen.storyboard */,
 				23CF97591E85610B00B5214C /* Info.plist */,
 			);
-			path = FaceIt;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
