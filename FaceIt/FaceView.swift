@@ -19,6 +19,15 @@ class FaceView: UIView {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     
+    private enum Eye {
+        case left
+        case right
+    }
+    
+    private func pathForEye(_ eye: Eye) -> UIBezierPath {
+        
+    }
+    
     private func pathForSkull() -> UIBezierPath {
         let path = UIBezierPath(arcCenter: skullCenter, radius: skullRadius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: false)
         path.lineWidth = 5.0
