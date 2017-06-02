@@ -8,13 +8,23 @@
 
 import UIKit
 
+@IBDesignable
 class FaceView: UIView {
-
+    
+    @IBInspectable
     var scale: CGFloat = 0.9  // means 90%
     
+    @IBInspectable
     var eyesOpen: Bool = true
     
+    @IBInspectable
     var mouthCurvature: Double = -0.5  // 1.0 is full smile and -1.0 is full frown
+    
+    @IBInspectable
+    var lineWidth: CGFloat = 5.0
+    
+    @IBInspectable
+    var color: UIColor = UIColor.blue
     
     // Skull
     // computed property for skull; only get property
@@ -33,7 +43,7 @@ class FaceView: UIView {
     
     private func pathForSkull() -> UIBezierPath {
         let path = UIBezierPath(arcCenter: skullCenter, radius: skullRadius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: false)
-        path.lineWidth = 5.0
+        path.lineWidth = lineWidth
         return path
     }
 
@@ -58,7 +68,7 @@ class FaceView: UIView {
             path.move(to: CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
             path.addLine(to: CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
         }
-        path.lineWidth = 5.0
+        path.lineWidth = lineWidth
         
         return path
     }
@@ -84,7 +94,7 @@ class FaceView: UIView {
         path.move(to: start)
         path.addCurve(to: end, controlPoint1: cp1, controlPoint2: cp2)
         
-        path.lineWidth = 5.0
+        path.lineWidth = lineWidth
         
         return path
     }
@@ -93,7 +103,7 @@ class FaceView: UIView {
     // Inside draw's coordinate system
     override func draw(_ rect: CGRect) {
         // Emoji face
-        UIColor.blue.set()
+        color.set()
         pathForSkull().stroke()
         pathForEye(.left).stroke()
         pathForEye(.right).stroke()
