@@ -107,7 +107,7 @@
 				TargetAttributes = {
 					23CF97491E85610A00B5214C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = BNMN262QZ2;
+						DevelopmentTeam = 9ATEMFZ3SF;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -273,10 +273,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BNMN262QZ2;
+				DEVELOPMENT_TEAM = 9ATEMFZ3SF;
 				INFOPLIST_FILE = FaceIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.seriesapp.FaceIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.classavvy.FaceIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -286,10 +286,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BNMN262QZ2;
+				DEVELOPMENT_TEAM = 9ATEMFZ3SF;
 				INFOPLIST_FILE = FaceIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.seriesapp.FaceIt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.classavvy.FaceIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -314,6 +314,7 @@
 				23CF975E1E85610B00B5214C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
