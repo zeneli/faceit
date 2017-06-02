@@ -12,7 +12,9 @@ class FaceView: UIView {
 
     var scale: CGFloat = 0.9  // means 90%
     
-    var eyesOpen: Bool = false
+    var eyesOpen: Bool = true
+    
+    var mouthCurvature: Double = -0.5  // 1.0 is full smile and -1.0 is full frown
     
     // Skull
     // computed property for skull; only get property
@@ -61,6 +63,32 @@ class FaceView: UIView {
         return path
     }
     
+    private func pathForMouth() -> UIBezierPath {
+        let mouthWidth = skullRadius / Ratios.skullRadiusToMouthWidth
+        let mouthHeight = skullRadius / Ratios.skullRadiusToMouthHeight
+        let mouthOffset = skullRadius / Ratios.skullRadiusToEyeOffset
+        
+        let mouthRect = CGRect(x: skullCenter.x - mouthWidth / 2, y: skullCenter.y + mouthOffset, width: mouthWidth, height: mouthHeight)
+
+        // curve control points for mouth curvature
+        // max, min enforces a value between -1 and 1
+        let smileOffset = CGFloat(max(-1, min(mouthCurvature, 1))) * mouthRect.height
+        let start = CGPoint(x: mouthRect.minX, y: mouthRect.midY)
+        let end = CGPoint(x: mouthRect.maxX, y: mouthRect.midY)
+        
+        // x is one third from the beginning of smile, y is the smileOffset from the beginning of smile
+        let cp1 = CGPoint(x: start.x + mouthRect.width / 3, y: start.y + smileOffset)
+        let cp2 = CGPoint(x: end.x - mouthRect.width / 3, y: end.y + smileOffset)
+
+        let path = UIBezierPath()
+        path.move(to: start)
+        path.addCurve(to: end, controlPoint1: cp1, controlPoint2: cp2)
+        
+        path.lineWidth = 5.0
+        
+        return path
+    }
+    
     
     // Inside draw's coordinate system
     override func draw(_ rect: CGRect) {
@@ -69,6 +97,7 @@ class FaceView: UIView {
         pathForSkull().stroke()
         pathForEye(.left).stroke()
         pathForEye(.right).stroke()
+        pathForMouth().stroke()
     }
     
     // Some constants of skull radius to eye and skull raidus to mouth
