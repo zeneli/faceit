@@ -12,6 +12,8 @@ class FaceView: UIView {
 
     var scale: CGFloat = 0.9  // means 90%
     
+    var eyesOpen: Bool = false
+    
     // Skull
     // computed property for skull; only get property
     private var skullRadius: CGFloat {
@@ -21,19 +23,18 @@ class FaceView: UIView {
         return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     
-    private func pathForSkull() -> UIBezierPath {
-        let path = UIBezierPath(arcCenter: skullCenter, radius: skullRadius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: false)
-        path.lineWidth = 5.0
-        return path
-    }
-
-    
     // Eye
     private enum Eye {
         case left
         case right
     }
     
+    private func pathForSkull() -> UIBezierPath {
+        let path = UIBezierPath(arcCenter: skullCenter, radius: skullRadius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: false)
+        path.lineWidth = 5.0
+        return path
+    }
+
     private func pathForEye(_ eye: Eye) -> UIBezierPath {
         // local function used here only
         func centerOfEye(_ eye: Eye) -> CGPoint {
@@ -43,10 +44,18 @@ class FaceView: UIView {
             eyeCenter.x += ((eye == .left) ? -1 : 1) * eyeOffset  // add or sub eye offset based on left or right eye
             return eyeCenter
         }
+        
         let eyeRadius = skullRadius / Ratios.skullRadiusToEyeRadius
         let eyeCenter = centerOfEye(eye)
         
-        let path = UIBezierPath(arcCenter: eyeCenter, radius: eyeRadius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let path: UIBezierPath
+        if eyesOpen {
+            path = UIBezierPath(arcCenter: eyeCenter, radius: eyeRadius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        } else {
+            path = UIBezierPath()
+            path.move(to: CGPoint(x: eyeCenter.x - eyeRadius, y: eyeCenter.y))
+            path.addLine(to: CGPoint(x: eyeCenter.x + eyeRadius, y: eyeCenter.y))
+        }
         path.lineWidth = 5.0
         
         return path
