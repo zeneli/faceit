@@ -12,7 +12,7 @@ import UIKit
 class FaceView: UIView {
     
     @IBInspectable
-    var scale: CGFloat = 0.9  // means 90%
+    var scale: CGFloat = 0.9
     
     @IBInspectable
     var eyesOpen: Bool = true
@@ -25,6 +25,17 @@ class FaceView: UIView {
     
     @IBInspectable
     var color: UIColor = UIColor.blue
+    
+    func changeScale(byReactingTo pinchRecognizer: UIPinchGestureRecognizer) {
+        switch pinchRecognizer.state {
+        case .changed, .ended:
+            scale *= pinchRecognizer.scale
+            print("scale = \(scale)")
+            pinchRecognizer.scale = 1
+        default:
+            break
+        }
+    }
     
     // Skull
     // computed property for skull; only get property

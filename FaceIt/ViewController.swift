@@ -12,6 +12,11 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var faceView: FaceView! {
         didSet {  // outlets take some time to initialize
+            // add a pinch gesture handler 
+            let handler = #selector(faceView.changeScale(byReactingTo:))
+            let pinchRecognizer = UIPinchGestureRecognizer(target: faceView, action: handler)
+            faceView.addGestureRecognizer(pinchRecognizer)
+            
             updateUI()  // listen and update when initialized
         }
     }
