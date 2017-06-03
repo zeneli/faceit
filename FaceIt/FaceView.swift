@@ -12,10 +12,10 @@ import UIKit
 class FaceView: UIView {
     
     @IBInspectable
-    var scale: CGFloat = 0.9 { didSet { setNeedsDisplay() } }
+    var scale: CGFloat = 0.9 { didSet { setNeedsDisplay() ; print("Scale = \(scale)") } }
     
     @IBInspectable
-    var eyesOpen: Bool = true { didSet { setNeedsDisplay() } }
+    var eyesOpen: Bool = true { didSet { setNeedsDisplay() ; print("Eyes = \(eyesOpen)") } }
     
     // 1.0 is full smile and -1.0 is full frown
     @IBInspectable
@@ -31,7 +31,6 @@ class FaceView: UIView {
         switch pinchRecognizer.state {
         case .changed, .ended:
             scale *= pinchRecognizer.scale
-            print("scale = \(scale)")
             pinchRecognizer.scale = 1
         default:
             break
