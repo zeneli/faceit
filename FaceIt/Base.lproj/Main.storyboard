@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8CW-XJ-0LT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dzl-Nd-Gxe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -52,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="100"/>
+            <point key="canvasLocation" x="-244" y="582"/>
         </scene>
         <!--Emotions View Controller-->
         <scene sceneID="K7e-XV-g1U">
@@ -96,7 +96,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dL4-Eo-dxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672.79999999999995" y="98.50074962518741"/>
+            <point key="canvasLocation" x="-244" y="-150"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="AAq-J6-mdH">
+            <objects>
+                <splitViewController id="Dzl-Nd-Gxe" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="8CW-XJ-0LT" kind="relationship" relationship="masterViewController" id="M27-pP-fip"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="rcd-Hj-nHc"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="es1-WP-bhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1074" y="217"/>
         </scene>
     </scenes>
 </document>
