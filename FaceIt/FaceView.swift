@@ -19,7 +19,7 @@ class FaceView: UIView {
     
     // 1.0 is full smile and -1.0 is full frown
     @IBInspectable
-    var mouthCurvature: Double = -0.5 { didSet { setNeedsDisplay() } }
+    var mouthCurvature: Double = -0.5 { didSet { setNeedsDisplay() ; print("Happiness = \(mouthCurvature)") } }
     
     @IBInspectable
     var lineWidth: CGFloat = 5.0 { didSet { setNeedsDisplay() } }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FaceViewController: UIViewController {
 
     @IBOutlet weak var faceView: FaceView! {
         didSet {  // outlets take some time to initialize
@@ -22,9 +22,21 @@ class ViewController: UIViewController {
             tapRecognizer.numberOfTapsRequired = 1  // default taps
             faceView.addGestureRecognizer(tapRecognizer)  // turn it on: add the recognizer to faceView
             
+            // add swipe up gesture handler
+            let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(increaseHappiness))
+            swipeUpRecognizer.direction = .up
+            faceView.addGestureRecognizer(swipeUpRecognizer)
+            // add swipe down gesture handler
+            let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(decreaseHappiness))
+            swipeDownRecognizer.direction = .down
+            faceView.addGestureRecognizer(swipeDownRecognizer)
+            
             updateUI()  // listen and update when initialized
         }
     }
+    
+    func increaseHappiness() { expression = expression.happier }
+    func decreaseHappiness() { expression = expression.sadder }
     
     func toggleEyes(byRectingTo tapRecognizer: UITapGestureRecognizer) {
         if tapRecognizer.state == .ended {  // toggle eyes to new state
